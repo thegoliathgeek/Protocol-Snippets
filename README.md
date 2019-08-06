@@ -6,3 +6,10 @@
 
 - UDP
     - Broadcast
+    
+- HTTP
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - PATCH
