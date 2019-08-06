@@ -6,7 +6,7 @@
 
 - UDP
     - Broadcast
-    
+    - Multicast
 - HTTP
     - GET
     - POST
