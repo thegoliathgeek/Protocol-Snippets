@@ -1,12 +1,9 @@
 import socket
-import time
 
-server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
-server.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-server.settimeout(0.2)
-server.bind(("", 1454))
-message = b"Hello From UDP"
+sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.bind(('', 3000))
+print('Listening at {}'.format(sock.getsockname()))
 while True:
-    server.sendto(message, ('<broadcast>', 3000))
-    print("message sent!")
-    time.sleep(1)
+    data, address = sock.recvfrom(65535)
+    text = data.decode('ascii')
+    print('Response from {} says: {}'.format(address, text))
