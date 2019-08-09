@@ -1,12 +1,12 @@
 import socket
+import time
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-server_address = ('localhost', 4000)
-address_array = []
-sock.bind(server_address)
+server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+server.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+server.settimeout(0.2)
+server.bind(("", 1454))
+message = b"Hello From UDP"
 while True:
-    data, addr = sock.recvfrom(1024)
-    if addr not in address_array:
-        address_array.append(addr)
-    for i in address_array:
-        sock.sendto('Hello From UDP Broad Cast'.encode('utf8'), i)
+    server.sendto(message, ('<broadcast>', 3000))
+    print("message sent!")
+    time.sleep(1)
