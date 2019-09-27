@@ -1,7 +1,7 @@
 # Protocol Snippets
 
 ### Demo examples of protocols like
-#### Use *ifconfig* to  know your broadcast address
+
 - TCP
 
 - UDP
